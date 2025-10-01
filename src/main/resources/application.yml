@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: course
+  datasource:
+    url: jdbc:mysql://localhost:3306/course
+    username: root
+    password: Arafat@1122
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
