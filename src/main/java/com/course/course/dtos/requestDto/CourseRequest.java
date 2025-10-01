@@ -1,6 +1,7 @@
 package com.course.course.dtos.requestDto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,9 +14,9 @@ public class CourseRequest {
     @NotBlank(message = "description is required")
     private String description;
 
-    @NotBlank(message = "startDate is required")
+    @NotNull(message = "startDate is required")
     private LocalDate startDate;
 
-    @NotBlank(message = "endDate is required")
+    @NotNull(message = "endDate is required")
     private LocalDate endDate;
 }
