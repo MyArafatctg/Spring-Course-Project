@@ -28,7 +28,7 @@ public class Course {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "status", insertable = false, updatable = false)
+    @Column(name = "status", insertable = false)
     private Boolean status;
 
 }
