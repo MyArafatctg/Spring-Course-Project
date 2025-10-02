@@ -60,7 +60,7 @@ public class CourseController {
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<CourseResponse>> updateCourse(
             @PathVariable(name = "id") Long id,
-            @RequestBody CourseRequest courseRequest)
+            @Valid @RequestBody CourseRequest courseRequest)
     {
         return new ResponseEntity<>(
                 ApiResponse.success(
@@ -81,7 +81,7 @@ public class CourseController {
     @PutMapping("/{id}/status")
     public ResponseEntity<ApiResponse<CourseResponse>> updateCourseStatus(
             @PathVariable(name = "id") Long id,
-            @RequestBody CourseStatusRequest request){
+           @Valid @RequestBody CourseStatusRequest request){
         return new ResponseEntity<>(
                 ApiResponse.success(
                         "Success",

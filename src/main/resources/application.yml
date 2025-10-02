@@ -10,3 +10,9 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  level:
+    root: INFO
+    com.course.course: DEBUG
+  file:
+    name: logs/course.log

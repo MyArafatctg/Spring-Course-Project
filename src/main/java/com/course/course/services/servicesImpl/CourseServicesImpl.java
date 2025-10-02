@@ -9,6 +9,8 @@ import com.course.course.services.CourseService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 public class CourseServicesImpl implements CourseService {
     private final CourseRepository courseRepository;
     private final CourseMapper mapper;
+    private static final Logger LOGGER = LoggerFactory.getLogger(CourseServicesImpl.class);
 
     @Override
     public List<CourseResponse> findAll() {
@@ -39,6 +42,7 @@ public class CourseServicesImpl implements CourseService {
     public CourseResponse create(CourseRequest courseRequest) {
         var course = mapper.toCourse(courseRequest);
         courseRepository.save(course);
+        LOGGER.info("Course created: {}", course);
         return mapper.toCourseResponse(course);
     }
 
@@ -52,6 +56,7 @@ public class CourseServicesImpl implements CourseService {
         course.setStartDate(courseRequest.getStartDate());
         course.setEndDate(courseRequest.getEndDate());
         courseRepository.save(course);
+        LOGGER.info("Course updated: {}", course);
         return mapper.toCourseResponse(course);
     }
 
@@ -61,6 +66,7 @@ public class CourseServicesImpl implements CourseService {
                 () -> new EntityNotFoundException("Course with id: " + id + " not found")
         );
         courseRepository.delete(course);
+        LOGGER.info("Course deleted: {}", course);
     }
 
     @Override
@@ -68,8 +74,9 @@ public class CourseServicesImpl implements CourseService {
         var course = courseRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Course with id: " + id + " not found")
         );
-        course.setStatus(statusRequest.isStatus());
+        course.setStatus(statusRequest.getStatus());
         courseRepository.save(course);
+        LOGGER.info("Course status updated: {}", course);
         return mapper.toCourseResponse(course);
     }
 }

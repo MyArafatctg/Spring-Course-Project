@@ -1,5 +1,6 @@
 package com.course.course.dtos.requestDto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,5 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CourseStatusRequest {
-    private boolean status;
+    @NotNull(message = "Status must be provided")
+    private Boolean status;
 }

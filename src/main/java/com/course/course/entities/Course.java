@@ -3,12 +3,14 @@ package com.course.course.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "course")
 public class Course {
     @Id
